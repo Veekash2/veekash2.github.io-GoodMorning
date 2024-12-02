@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Remove margins and padding from the body and html */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: white; /* Set the background to white */
+        }
+
+        /* Remove margins and padding from the list */
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style the list items */
+        ul li {
+            cursor: pointer;
+            position: relative;
+            padding: 12px 8px 12px 40px;
+            background: #ffe4e1; /* Light pink background */
+            font-size: 18px;
+            transition: 0.2s;
+            border-radius: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Set all odd list items to a slightly lighter color */
+        ul li:nth-child(odd) {
+            background: #fff0f5; /* Very light pink background */
+        }
+
+        /* Darker background-color on hover */
+        ul li:hover {
+            background: #ffb6c1; /* Slightly darker pink on hover */
+            color: white;
+        }
+
+        /* When clicked on, add a background color and strike out text */
+        ul li.checked {
+            background: #ff1493;
+            color: #fff;
+            text-decoration: line-through;
+        }
+
+        /* Add a "checked" mark when clicked on */
+        ul li.checked::before {
+            content: '';
+            position: absolute;
+            border-color: #fff;
+            border-style: solid;
+            border-width: 0 2px 2px 0;
+            top: 10px;
+            left: 16px;
+            transform: rotate(45deg);
+            height: 15px;
+            width: 7px;
+        }
+
+        /* Style the close button */
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px 12px 16px;
+            color: #fff;
+            background-color: #ff1493;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            background-color: #ff6347;
+        }
+
+        /* Style the header */
+        .header {
+            background-color: #ffb6c1; /* Light pink */
+            padding: 30px 40px;
+            color: white;
+            text-align: center;
+            font-family: 'Comic Sans MS', sans-serif;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.3);
+        }
+
+        /* Clear floats after the header */
+        .header:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Style the input */
+        input {
+            margin: 0;
+            border: none;
+            border-radius: 25px;
+            width: 75%;
+            padding: 12px;
+            float: left;
+            font-size: 16px;
+            border: 2px solid #ff69b4;
+            background: #fff0f5;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ff1493;
+        }
+
+        /* Style the "Add" button */
+        .addBtn {
+            padding: 12px;
+            width: 25%;
+            background: #ff1493;
+            color: white;
+            float: left;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 25px;
+            box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3);
+        }
+
+        .addBtn:hover {
+            background-color: #ff6347;
+            box-shadow: 0 4px 20px rgba(255, 99, 71, 0.3);
+        }
+
+        /* Style the pink bottom button */
+        .pinkButton {
+            background-color: #ffb6c1; /* Light pink */
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            border-radius: 25px;
+            width: 100%;
+            margin-top: 20px;
+            box-sizing: border-box; /* Prevents the button from overflowing */
+        }
+
+        .pinkButton:hover {
+            background-color: #d81b60; /* Darker pink on hover */
+        }
+
+        /* Add spacing between the content and the bottom button */
+        .content {
+            padding-bottom: 80px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <div id="myDIV" class="header">
+        <h2>Kiara & Veekash ToDo List</h2>
+        <input type="text" id="myInput" placeholder="Add Another...">
+        <span onclick="newElement()" class="addBtn">Add</span>
+    </div>
+
+    <ul id="myUL">
+        <li>Go for a picnic</li>
+        <li>Go out for supper</li>
+        <li>Go for a long drive</li>
+        <li>Paint Rooms</li>
+        <li class="checked">Put skirtings on the floor</li>
+    </ul>
+
+    <!-- Content wrapper to adjust layout -->
+    <div class="content">
+        <button class="pinkButton" id="button1" > Next </button>
+    </div>
+
+    <script>
+        var myNodelist = document.getElementsByTagName("LI");
+        var i;
+        for (i = 0; i < myNodelist.length; i++) {
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            myNodelist[i].appendChild(span);
+        }
+
+        // Click on a close button to hide the current list item
+        var close = document.getElementsByClassName("close");
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function() {
+                var div = this.parentElement;
+                div.style.display = "none";
+            }
+        }
+
+        // Add a "checked" symbol when clicking on a list item
+        var list = document.querySelector('ul');
+        list.addEventListener('click', function(ev) {
+            if (ev.target.tagName === 'LI') {
+                ev.target.classList.toggle('checked');
+            }
+        }, false);
+
+        // Create a new list item when clicking on the "Add" button
+        function newElement() {
+            var li = document.createElement("li");
+            var inputValue = document.getElementById("myInput").value;
+            var t = document.createTextNode(inputValue);
+            li.appendChild(t);
+            if (inputValue === '') {
+                alert("You must write something!");
+            } else {
+                document.getElementById("myUL").appendChild(li);
+            }
+            document.getElementById("myInput").value = "";
+
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            li.appendChild(span);
+
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function() {
+                    var div = this.parentElement;
+                    div.style.display = "none";
+                }
+            }
+        }
+
+        document.getElementById('button1').addEventListener('click', function() {
+            window.location.href = 'love.html';  
+        });
+    </script>
+</body>
+</html>

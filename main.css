@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Khula:700');
+
+body {
+  background: white;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: relative; 
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.console-container {
+  font-family: Khula;
+  font-size: 2em;
+  text-align: center;
+  height: 200px;
+  width: 600px;
+  display: block;
+  color: white;
+  position: relative; 
+  padding: 2%;
+}
+
+.console-underscore {
+  display: inline-block;
+  position: relative;
+  top: -0.14em;
+  left: 10px;
+}
+
+.glow-on-hover {
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: pink;
+  cursor: pointer;
+  position: fixed; /* Changed to fixed position */
+  bottom: 20px; /* Adjust this value to set how far the button is from the bottom */
+  left: 50%; /* Center the button horizontally */
+  transform: translateX(-50%); /* Center the button exactly */
+  z-index: 0;
+  border-radius: 10px;
+  opacity: 0; /* Initially hidden */
+  animation: appear 25s forwards; /* Animation to make it appear after 3 seconds */
+  animation-delay: 30s; /* Delay before the button starts appearing */
+}
+
+.glow-on-hover:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 25s linear infinite;
+  opacity: 1; /* Set opacity to 1 for constant glow */
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #000;
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: lightpink;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

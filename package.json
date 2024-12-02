@@ -1,0 +1,12 @@
+{
+  "name": "proposal_valentine_special-main",
+  "version": "1.0.0",
+  "description": "Welcome to the Proposal_Valentine_Special project! This project is designed to create a romantic and special experience for your loved one with an animated heart shape and an \"I love you\" button.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

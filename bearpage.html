@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cute Notes App</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff0f6; /* Soft pink background */
+        color: #333;
+    }
+
+    .container {
+        max-width: 80%;
+        margin: 20px auto;
+        padding: 20px;
+        border: 2px solid #ff6ec7; /* Light pink border */
+        border-radius: 15px;
+        background-color: #fff; /* White background for the container */
+        position: relative;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .button {
+        padding: 12px 25px;
+        background-color: #ff6ec7; /* Light pink */
+        color: white;
+        border: none;
+        border-radius: 30px; /* More rounded corners */
+        cursor: pointer;
+        width: 220px; /* Set the width of the button */
+        display: block;
+        margin: 10px auto;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .button:hover {
+        background-color: #ff1493; /* Darker pink on hover */
+    }
+
+    .teddy {
+        position: absolute;
+        bottom: -20px;
+        right: 20px;
+        width: 100px;
+    }
+
+    .container2 {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.1), -15px -15px 30px rgba(255, 255, 255, 0.5); /* Soft neumorphism */
+        margin-top: 30px;
+        max-width: 80%;
+        justify-self: center;
+        margin-bottom: 80px; /* Added margin to give space for the button */
+    }
+
+    .glow-on-hover {
+        width: 220px;
+        height: 50px;
+        border: none;
+        outline: none;
+        color: #fff;
+        background: #ff6ec7;
+        cursor: pointer;
+        position: fixed; /* Changed to fixed position */
+        bottom: 20px; /* Adjust this value to set how far the button is from the bottom */
+        left: 50%; /* Center the button horizontally */
+        transform: translateX(-50%); /* Center the button exactly */
+        z-index: 0;
+        border-radius: 30px;
+        opacity: 0; /* Initially hidden */
+        animation: appear 5s forwards; /* Animation to make it appear after 3 seconds */
+        animation-delay: 5s; /* Delay before the button starts appearing */
+    }
+
+    .glow-on-hover:before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing 25s linear infinite;
+        opacity: 1; /* Set opacity to 1 for constant glow */
+        border-radius: 30px;
+    }
+
+    .glow-on-hover:active {
+        color: #000;
+    }
+
+    .glow-on-hover:active:after {
+        background: transparent;
+    }
+
+    .glow-on-hover:after {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: lightpink;
+        left: 0;
+        top: 0;
+        border-radius: 30px;
+    }
+
+    @keyframes glowing {
+        0% { background-position: 0 0; }
+        50% { background-position: 400% 0; }
+        100% { background-position: 0 0; }
+    }
+
+    @keyframes appear {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2 style="text-align: center; color: #ff6ec7;">4:33 Thoughts</h2>
+    <img src="https://emojicdn.elk.sh/🧸" alt="Teddy Bear" class="teddy">
+</div>
+
+<div class="container2">
+    <p>Before I met you, I was a cold person who hated everyone and everything. I honestly thought no one would ever make me feel anything, let alone laugh. But then I met you.</p>
+    <p>I can't express enough how much you mean to me. Every time we laugh together on video calls and talk for hours, it makes me feel so close to you.</p>
+    <p>Life has a way of testing us, but I truly believe that the longer we talk, the more I realize how strong my feelings for you are.  I cherish every moment we share and look forward to what’s to come.</p>
+    <p>Every morning, before I start my day, I take a moment to pray for us. I ask for happiness, strength, and patience, and most of all, for our connection to keep growing.</p> 
+</div>
+
+<button class="button" id="button1">Why its so hard to not love you</button>
+
+<script>
+    document.getElementById('button1').addEventListener('click', function() {
+        window.location.href = 'message.html';  
+    });
+</script>
+
+</body>
+</html>
