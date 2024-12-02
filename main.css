@@ -40,7 +40,7 @@ body {
   border: none;
   outline: none;
   color: #fff;
-  background: pink;
+  background: #ff1493;
   cursor: pointer;
   position: fixed; /* Changed to fixed position */
   bottom: 20px; /* Adjust this value to set how far the button is from the bottom */
@@ -82,7 +82,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: lightpink;
+  background: #ff1493;
   left: 0;
   top: 0;
   border-radius: 10px;
