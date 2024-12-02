@@ -23,7 +23,7 @@ The Proposal_Valentine_Special project features a heart shape animation accompan
 - CSS
 - JavaScript
 
-![Description of the image](https://veekash2.github.io-GoodMorning/k.jpg)
+![Description of the image](https://github.com/Veekash2/veekash2.github.io-GoodMorning/blob/main/k.jpg)
 
 
 ## License
